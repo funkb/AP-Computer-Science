@@ -1,9 +1,11 @@
-#Digits problem
+# Digits problem
 
-public class Digits{
+'''public class Digits
+{
     /** The list of digits from the number used to construct this object.
      *  The digits appear in the list in the same order in which they appear in the original number.
      */
+     
     private ArrayList<Integer> digitList;
     
     /** Contructs a Digits object that represents num.
@@ -18,7 +20,7 @@ public class Digits{
     public boolean isStrictlyIncreasing()
     {  /*  to be implemented  */  }
     
-}
+}'''
 
 
 
