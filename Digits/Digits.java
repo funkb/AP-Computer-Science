@@ -19,6 +19,7 @@ public class Digits {
             }
             System.out.println(isStrictlyIncreasing()); //Print out the result of our method.
         }
+        
 
         public boolean isStrictlyIncreasing() //Given
         {
@@ -29,6 +30,7 @@ public class Digits {
                 } else { //If not, stop the program and return false
                     return false;
                 }
+                
             }
 
 
