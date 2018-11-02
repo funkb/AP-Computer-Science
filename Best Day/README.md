@@ -11,7 +11,7 @@ The first line of input will contain a single integer n that indicates the numbe
 following n lines will contain 7 integer values, each separated by a space, representing James' sales on days
 SUNDAY through SATURDAY respectively.
 
-# Note: You may assume that no two days will have the same amount of sales.
+Note: You may assume that no two days will have the same amount of sales.
 # Output
 For each week and in uppercase, you will print the day of the week that his sales were the greatest, as shown below.
 # Example Input File
