@@ -218,7 +218,7 @@ void remove_flag(char (&arr_vis)[GRID_SIZE][GRID_SIZE]){
 	x-=1;
 	y-=1;
 	if(in_grid(x,y) && arr_vis[x][y] == 'F'){
-		arr_vis[x][y] == '#';
+		arr_vis[x][y] = '#';
 	}else{
 		cout << "That is not a flag!" << endl;
 	}
