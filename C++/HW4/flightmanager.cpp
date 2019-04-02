@@ -4,17 +4,14 @@ using namespace std;
 
 FlightManager::FlightManager() { }
 
-FlightManager::~FlightManager() {
-  delete flights;
-  delete iter;
-}
+FlightManager::~FlightManager() { }
 
 void FlightManager::AddFlight(){
 
 }
 
 void FlightManager::AddFlight(Flight& flight){
-  flights->push_back(flight);
+  flights.push_back(flight);
 }
 
 void FlightManager::EditFlight(const int& flightID){
@@ -26,7 +23,7 @@ void FlightManager::DeleteFlight(const int& flightID){
 }
 
 bool FlightManager::FlightExists(const int& flightID){
-  for(auto& i : *flights){
+  for(auto& i : flights){
     if(i.GetFlightID() == flightID){
       return true;
     }
@@ -36,7 +33,7 @@ bool FlightManager::FlightExists(const int& flightID){
 
 Flight& FlightManager::Find(const int& flightID){
   if(FlightExists(flightID)){
-    for(auto& i : *flights){
+    for(auto& i : flights){
       if(i.GetFlightID() == flightID){
         return i;
       }

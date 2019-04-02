@@ -22,10 +22,7 @@ Flight::Flight(const string& planeID, const int& numPilots, const int& numCabinC
       SetEndDate(endTime[0],endTime[1],endTime[2],endTime[3],endTime[4]);
 }
 
-Flight::~Flight(){
-  if(pilotIDs) delete pilotIDs;
-  if(cabinCrewIDs) delete cabinCrewIDs;
-}
+Flight::~Flight(){ }
 
 string Flight::GetPlaneID() const{
   return planeID;
@@ -49,17 +46,17 @@ void Flight::SetNumCabinCrew(const int& numCabinCrew){
 }
 
 void Flight::AddPilotID(const int& ID){
-  pilotIDs->push_back(ID);
+  pilotIDs.push_back(ID);
 }
 void Flight::RemovePilotID(const int& ID){
-  pilotIDs->remove(ID);
+  pilotIDs.remove(ID);
 }
 
 void Flight::AddCabinCrewID(const int& ID){
-  cabinCrewIDs->push_back(ID);
+  cabinCrewIDs.push_back(ID);
 }
 void Flight::RemoveCabinCrewID(const int& ID){
-  cabinCrewIDs->remove(ID);
+  cabinCrewIDs.remove(ID);
 }
 
 string Flight::GetStartAirport() const{

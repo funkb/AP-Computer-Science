@@ -20,7 +20,7 @@ void CrewManager::AddMember(){
 void CrewManager::AddMember(CrewMember& member){
   crew.push_back(member);
 }
-
+/*
 void CrewManager::EditMember(const string& name){
   if(MemberExists(name)){
     cout << "Editing " << name << ":" << endl;
@@ -65,7 +65,7 @@ void CrewManager::EditMember(const string& name){
     cout << "Couldn\'t find that employee." << endl;
   }
 }
-
+*/
 void CrewManager::EditMember(const int& ID){
   if(MemberExists(ID)){
     cout << "Editing " << Find(ID).GetName() << ":" << endl;
@@ -110,19 +110,19 @@ void CrewManager::EditMember(const int& ID){
     cout << "Couldn\'t find that employee." << endl;
   }
 }
-
+/*
 void CrewManager::DeleteMember(const string& name){
   if(MemberExists(name)){
     for (iter = crew.begin(); iter != crew.end();++iter){
       if(iter->GetName() == name)
-        iter = crew.erase(iter);
+        crew.erase(iter);
 
     }
   }else
     cout << "Couldn\'t find that employee." << endl;
 
 }
-
+*/
 void CrewManager::DeleteMember(const int& ID){
   if(MemberExists(ID)){
     for (iter = crew.begin(); iter != crew.end();++iter){
@@ -134,7 +134,7 @@ void CrewManager::DeleteMember(const int& ID){
     cout << "Couldn\'t find that employee." << endl;
 
 }
-
+/*
 bool CrewManager::MemberExists(const string& name){
   for (auto const& i : crew){
     if(i.GetName() == name)
@@ -142,6 +142,8 @@ bool CrewManager::MemberExists(const string& name){
   }
   return false;
 }
+*/
+
 bool CrewManager::MemberExists(const int& ID){
   for (auto const& i : crew){
     if(i.GetIDNum() == ID)
@@ -159,6 +161,8 @@ CrewMember& CrewManager::Find(const int& ID){
   }else
     cout << "Couldn\'t find that employee." << endl;
 }
+
+/*
 CrewMember& CrewManager::Find(const string& name){
   if(MemberExists(name)){
     for (auto& i : crew){
@@ -168,7 +172,7 @@ CrewMember& CrewManager::Find(const string& name){
   }else
     cout << "Couldn\'t find that employee." << endl;
 }
-
+*/
 void CrewManager::PrintMembers(){
   cout << "\nCrew Member's: " << endl;
   for (auto const& i : crew){
@@ -182,13 +186,14 @@ void CrewManager::Print(const int& ID){
   else
     cout << "Could\'t find an employee with ID#:" <<to_string(ID) << endl;
 }
+/*
 void CrewManager::Print(const string& name){
   if(MemberExists(name))
     cout << Find(name).toString() << endl;
   else
     cout << "Couldn't find an employee by the name of \'" << name << "\'." << endl;
 }
-
+*/
 void CrewManager::RunMenu(){
   bool running = true;
 
@@ -202,94 +207,35 @@ void CrewManager::RunMenu(){
         AddMember();
       }break;
       case 2:{
-        string name;
         int id;
-        bool running=true;
-        int option;
-        while (running){
-          printf("\n=====Edit Menu=====\n");
-          printf("1. Edit By Name\n2. Edit by ID\n3. Exit\n>");
-          cin >> option;
-          switch(option){
-            case 1:{
-              printf("\nEnter the name: ");
-              getline(cin,name);
-              EditMember(name);
-            }break;
-            case 2:{
-              printf("\nEnter the ID: ");
-              cin >> id;
-              EditMember(id);
-            }break;
-            default:
-            case 3:{
-              running=false;
-            }break;
-          }
-        }
+        printf("\n=====Edit Menu=====\n");
+        printf("Enter ID# >");
+        cin >> id;
+        EditMember(id);
       }break;
       case 3:{
-        string name;
         int id;
-        bool running=true;
-        int option;
-        while (running){
-          printf("\n=====Edit Menu=====\n");
-          printf("1. Edit By Name\n2. Edit by ID\n3. Exit\n>");
-          cin >> option;
-          switch(option){
-            case 1:{
-              printf("\nEnter the name: ");
-              getline(cin,name);
-              DeleteMember(name);
-            }break;
-            case 2:{
-              printf("\nEnter the ID: ");
-              cin >> id;
-              DeleteMember(id);
-            }break;
-            default:
-            case 3:{
-              running=false;
-            }break;
-          }
-        }
+        printf("\n=====Delete Menu=====\n");
+        printf("Enter ID# >");
+        cin >> id;
+        DeleteMember(id);
       }break;
       case 4:{
-        string name;
         int id;
-        bool running=true;
-        int option;
-        while (running){
-          printf("\n=====Edit Menu=====\n");
-          printf("1. Edit By Name\n2. Edit by ID\n3. Exit\n>");
-          cin >> option;
-          switch(option){
-            case 1:{
-              printf("\nEnter the name: ");
-              getline(cin,name);
-              Print(name);
-            }break;
-            case 2:{
-              printf("\nEnter the ID: ");
-              cin >> id;
-              Print(id);
-            }break;
-            default:
-            case 3:{
-              running=false;
-            }break;
-          }
-        }
+        printf("\n=====Print Menu=====\n");
+        printf("Enter ID# >");
+        cin >> id;
+        Print(id);
       }break;
       case 5:{
         PrintMembers();
       }break;
-      default:
       case 6:{
         running=false;
         break;
       }
+      default:
+        cout << "Enter a valid option!" << endl;
     }
   }
 }

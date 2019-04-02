@@ -1,0 +1,47 @@
+This project was definitely one of the more difficult projects I've done before, mainly because of the sheer size of this airlines system.
+I ran into a couple of different walls during this project, here are a couple and how I solved them.
+
+During the User Testing phase of some of my object classes, I was making changes to my code, but was still getting this error:
+
+crewmember.cpp:30:8: error: no declaration matches 'std::__cxx11::string CrewMember::toString()'
+string CrewMember::toString(){
+crewmember.h:23:10: note: candidate is: 'void CrewMember::toString()'
+
+crewmember.h:5:7: note: 'class CrewMember' defined here
+ class CrewMember{
+
+The first problem I noticed was that my return type for my function declaration was void, while it was meant to be string.
+I fixed the issue and then still got the same error. Turns out the make command was creating a crewmember.h.gch that was messing
+with my program. I deleted the file and it compiled perfectly. My guess would be that I didn't properly clean up residual files with
+my makefile at the time.
+
+
+The second issue I had was getting my iterator to properly erase an element from my list.
+I originally declared my list and iterator like so:
+
+list<Plane> * planes = new list<Plane>;
+list<Plane>::iterator * iter = new list<Plane>::iterator;
+
+and that was giving errors when I was trying to iterate to delete.
+
+void PlaneManager::DeletePlane(const string& tailNumber){
+  if(PlaneExists(tailNumber)){
+    for (iter = planes->begin(); iter != planes->end();++iter){
+      if(iter.GetTailNumber() == tailNumber)
+        planes->erase(iter);
+    }
+  }else
+    cout << "Couldn\'t find that plane." << endl;
+}
+
+I figured I didn't need to declare the list and iterator as a pointer, so I just cut that out to just:
+
+list<Plane> planes;
+list<Plane>::iterator iter;
+
+and my for loop worked perfectly with just a couple of tweaks.
+
+Lastly for my Crewmanager, I really didn't need to create function to work with both a name and an ID number. I figured since the ID
+was a unique number, creating functions to work with names as well just unnecessary, which is why you see a bunch of functions commented.
+
+Overall this was a fun project, even with the headaches and many segmentation faults.

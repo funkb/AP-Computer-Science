@@ -28,11 +28,11 @@ void PlaneManager::AddPlane(){
   cin >> range;
   cout << "Minimum flight crew: ";
   cin >> minCrew;
-  planes->push_back(Plane(make,model,tailNumber,numSeats,range,minCrew));
+  planes.push_back(Plane(make,model,tailNumber,numSeats,range,minCrew));
 }
 
 void PlaneManager::AddPlane(Plane& plane){
-  planes->push_back(plane);
+  planes.push_back(plane);
 }
 
 void PlaneManager::EditPlane(const string& tailNumber){
@@ -50,7 +50,7 @@ void PlaneManager::DeletePlane(const string& tailNumber){
 }
 
 bool PlaneManager::PlaneExists(const string& tailNumber){
-  for(auto& plane : *planes){
+  for(auto& plane : planes){
     if(plane.GetTailNumber() == tailNumber){
       return true;
     }
@@ -60,7 +60,7 @@ bool PlaneManager::PlaneExists(const string& tailNumber){
 
 Plane& PlaneManager::Find(const string& tailNumber){
   if(PlaneExists(tailNumber)){
-    for(auto& plane: *planes){
+    for(auto& plane: planes){
       if(plane.GetTailNumber() == tailNumber){
         return plane;
       }
@@ -73,7 +73,7 @@ Plane& PlaneManager::Find(const string& tailNumber){
 void PlaneManager::PrintPlanes(){
   cout << "All planes: " << endl;
   int count=1;
-  for(auto& plane : *planes){
+  for(auto& plane : planes){
     cout << "Plane #" << count << endl;
     cout << plane.toString() << endl;
     count++;

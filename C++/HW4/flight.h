@@ -13,8 +13,8 @@ private:
   string planeID;
   int numPilots;
   int numCabinCrew;
-  list<int> * pilotIDs = new list<int>;
-  list<int> * cabinCrewIDs = new list<int>;
+  list<int> pilotIDs;
+  list<int> cabinCrewIDs;
   string startAirport;
   string endAirport;
   int numPassengers;

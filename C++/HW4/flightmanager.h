@@ -11,8 +11,8 @@ using namespace std;
 
 class FlightManager{
 private:
-  list<Flight> * flights = new list<Flight>;
-  list<Flight>::iterator * iter = new list<Flight>::iterator;
+  list<Flight> flights;
+  list<Flight>::iterator iter;
 public:
   FlightManager();
   ~FlightManager();
