@@ -42,8 +42,10 @@ void PlaneManager::EditPlane(const string& tailNumber){
 void PlaneManager::DeletePlane(const string& tailNumber){
   if(PlaneExists(tailNumber)){
     for (iter = planes.begin(); iter != planes.end();++iter){
-      if(iter->GetTailNumber() == tailNumber)
+      if(iter->GetTailNumber() == tailNumber){
         iter = planes.erase(iter);
+        return;
+      }
     }
   }else
     cout << "Couldn\'t find that plane." << endl;
@@ -130,6 +132,7 @@ void PlaneManager::RunMenu(){
     }
   }
 }
+
 
 string PlaneManager::toString() const{
   return "";

@@ -20,52 +20,7 @@ void CrewManager::AddMember(){
 void CrewManager::AddMember(CrewMember& member){
   crew.push_back(member);
 }
-/*
-void CrewManager::EditMember(const string& name){
-  if(MemberExists(name)){
-    cout << "Editing " << name << ":" << endl;
-    enum options{NAME=1,IDNUM=2,TYPE=3,EXIT=4};
-    int sel;
-    bool exit = false;
-    while(!exit){
-      cout << "Select the option to change: " << endl;
-      cout << "1. Name" << endl << "2. ID Number" << endl << "3. Role" << endl << "4. Exit" << endl;
-      cout << ">";
-      cin >> sel;
-      switch(sel){
-        case NAME:{
-          string nameNew;
-          cout << "New name >";
-          cin.ignore();
-          getline(cin,nameNew);
-          Find(name).SetName(nameNew);
-        }break;
-        case IDNUM:{
-          int id;
-          cout << "New id >";
-          cin >> id;
-          cin.ignore();
-          Find(name).SetIDNum(id);
-        }break;
-        case TYPE:{
-          string role;
-          cout << "New role >";
-          cin.ignore();
-          getline(cin,role);
-          Find(name).SetType(role);
 
-        }break;
-        case EXIT:
-        default:
-          exit=true;
-          break;
-      }
-    }
-  }else{
-    cout << "Couldn\'t find that employee." << endl;
-  }
-}
-*/
 void CrewManager::EditMember(const int& ID){
   if(MemberExists(ID)){
     cout << "Editing " << Find(ID).GetName() << ":" << endl;
@@ -110,39 +65,20 @@ void CrewManager::EditMember(const int& ID){
     cout << "Couldn\'t find that employee." << endl;
   }
 }
-/*
-void CrewManager::DeleteMember(const string& name){
-  if(MemberExists(name)){
-    for (iter = crew.begin(); iter != crew.end();++iter){
-      if(iter->GetName() == name)
-        crew.erase(iter);
 
-    }
-  }else
-    cout << "Couldn\'t find that employee." << endl;
-
-}
-*/
 void CrewManager::DeleteMember(const int& ID){
   if(MemberExists(ID)){
     for (iter = crew.begin(); iter != crew.end();++iter){
-      if(iter->GetIDNum() == ID)
+      if(iter->GetIDNum() == ID){
         iter = crew.erase(iter);
+        return;
+      }
 
     }
   }else
     cout << "Couldn\'t find that employee." << endl;
 
 }
-/*
-bool CrewManager::MemberExists(const string& name){
-  for (auto const& i : crew){
-    if(i.GetName() == name)
-      return true;
-  }
-  return false;
-}
-*/
 
 bool CrewManager::MemberExists(const int& ID){
   for (auto const& i : crew){
@@ -162,17 +98,6 @@ CrewMember& CrewManager::Find(const int& ID){
     cout << "Couldn\'t find that employee." << endl;
 }
 
-/*
-CrewMember& CrewManager::Find(const string& name){
-  if(MemberExists(name)){
-    for (auto& i : crew){
-      if(i.GetName() == name)
-        return i;
-    }
-  }else
-    cout << "Couldn\'t find that employee." << endl;
-}
-*/
 void CrewManager::PrintMembers(){
   cout << "\nCrew Member's: " << endl;
   for (auto const& i : crew){
@@ -186,14 +111,7 @@ void CrewManager::Print(const int& ID){
   else
     cout << "Could\'t find an employee with ID#:" <<to_string(ID) << endl;
 }
-/*
-void CrewManager::Print(const string& name){
-  if(MemberExists(name))
-    cout << Find(name).toString() << endl;
-  else
-    cout << "Couldn't find an employee by the name of \'" << name << "\'." << endl;
-}
-*/
+
 void CrewManager::RunMenu(){
   bool running = true;
 
@@ -239,6 +157,7 @@ void CrewManager::RunMenu(){
     }
   }
 }
+
 
 string CrewManager::toString() const{
   return "";

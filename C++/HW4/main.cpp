@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 /*
 #include "date.h"
 #include "crewmember.h"
@@ -75,6 +76,15 @@ int main(){
   CrewManager cm;
   FlightManager fm;
 
+
+  //ifstream in("info.dat");
+  //if(!in.eof() && in.is_open()){
+    //cm.LoadData(in);
+    //pm.LoadData(in);
+    //fm.LoadData(in);
+  //}
+  //in.close();
+
   bool running = true;
   int option;
   while(running){
@@ -98,6 +108,12 @@ int main(){
         cout << "\nPlease enter a valid option!\n";
     }
   }
+
+  //ofstream out("info.dat");
+  //cm.SaveData(out);
+  //pm.SaveData(out);
+  //fm.SaveData(out);
+  //out.close();
 	return 0;
 
 }

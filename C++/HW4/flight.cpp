@@ -9,17 +9,14 @@ Flight::Flight(){
   numPassengers = 0;
   status = 0;
   flightID = 0;
-  list<int> * pilotIDs = new list<int>;
-  list<int> * cabinCrewIDs = new list<int>;
 }
 
 Flight::Flight(const string& planeID, const int& numPilots, const int& numCabinCrew,
     const string& startAirport, const string& endAirport, const int& numPassengers,
-    const int& status,const int& flightID, int startTime[5], int endTime[5] ) : planeID(planeID),
+    const int& status,const int& flightID, Date startDate, Date endDate) : planeID(planeID),
     numPilots(numPilots), numCabinCrew(numCabinCrew), startAirport(startAirport),
-    endAirport(endAirport), numPassengers(numPassengers), status(status), flightID(flightID) {
-      SetStartDate(startTime[0],startTime[1],startTime[2],startTime[3],startTime[4]);
-      SetEndDate(endTime[0],endTime[1],endTime[2],endTime[3],endTime[4]);
+    endAirport(endAirport), numPassengers(numPassengers), status(status), flightID(flightID),startDate(startDate),
+    endDate(endDate) {
 }
 
 Flight::~Flight(){ }
@@ -121,6 +118,9 @@ string Flight::GetStatus() const{
 void Flight::PrintStatus() const{
 
   cout << "Flight is " + GetStatus();
+}
+void Flight::SetStatus(const int& status){
+  this->status = status;
 }
 
 string Flight::toString() const{

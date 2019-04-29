@@ -20,17 +20,17 @@ private:
   int numPassengers;
   int status;
   int flightID;
-  enum status_options{Active, Complete, Canceled};
+  enum status_options{Active=1, Complete=2, Canceled=3};
   Date startDate;
   Date endDate;
 public:
 
 
   Flight();
-  Flight(const string& planeID, const int& numPilots, const int& GetNumCabinCrew,
+  Flight(const string& planeID, const int& numPilots, const int& numCabinCrew,
       const string& startAirport, const string& endAirport, const int& numPassengers,
-      const int& status,const int& flightID, int startTime[5], int endTime[5] );
-  ~Flight(); //Delete Lists
+      const int& status,const int& flightID, Date startDate, Date endDate );
+  ~Flight();
 
   string GetPlaneID() const;
   void SetPlaneID(const string& planeID);
@@ -66,6 +66,7 @@ public:
   void SetFlightID(const int& flightID);
 
   string GetStatus() const;
+  void SetStatus(const int& status);
   void PrintStatus() const;
   string toString() const;
 };

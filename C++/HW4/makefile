@@ -1,7 +1,7 @@
 CC=g++
-FLAGS=std=c++0x
+FLAGS=std=c++11
 
-main: main.cpp crewmanager.cpp date.cpp flight.cpp crewmember.cpp plane.cpp planemanager.cpp flightmanager.cpp
+main: main.cpp date.cpp flight.cpp crewmember.cpp plane.cpp planemanager.cpp flightmanager.cpp crewmanager.cpp
 	$(CC) -$(FLAGS) -o main main.cpp crewmanager.cpp flight.cpp date.cpp crewmember.cpp plane.cpp planemanager.cpp flightmanager.cpp
 
 .PHONY: clean
